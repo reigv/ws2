@@ -15,7 +15,7 @@ Employee::Employee(int _id, float _salary, const char* _name) {
 
     // dynamic means knowing the length
     int length= strlen(_name);
-    // 
+    // assign to the available memory space - does it has to be continuous
+    name = new char[length+1];
 
-    name = new char
 }
