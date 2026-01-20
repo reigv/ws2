@@ -19,6 +19,8 @@ public:
     // copy
     Employee(const Employee&);
 
+    void print() const;
+
     // deconstruct
     ~Employee();
     

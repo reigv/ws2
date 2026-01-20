@@ -2,6 +2,7 @@
 
 #include "employee.h"
 #include <cstring>
+#include <iostream>
 
 Employee::Employee(){
     id_num=0;
@@ -15,7 +16,38 @@ Employee::Employee(int _id, float _salary, const char* _name) {
 
     // dynamic means knowing the length
     int length= strlen(_name);
-    // assign to the available memory space - does it has to be continuous
+    // assign to the available memory space - does it has to be continuous - yes 1 continuous block of memory
     name = new char[length+1];
+    // once all setuo the length -> assign value
+    strcpy(name, _name);
+}
 
+Employee::Employee(const Employee& other) {
+    this->id_num = other.id_num;
+    this->salary = other.salary;
+
+
+    // deep copy so deleting the other wont effect this
+    if (other.name != nullptr)
+    {
+        int length = strlen(other.name);
+        name = new char[length+1];
+        strcpy(this->name, other.name);
+
+    }else{
+        this->name = nullptr;
+
+    }
+    
+}
+
+void Employee::print() const{
+    std::cout << "Employee's name: " << name << std::endl;
+    std::cout << "Employee's id: " << id_num << std::endl;
+    std::cout << "Employee's salary: " << salary << std::endl;
+}
+
+Employee::~Employee(){
+    delete[] this->name;
+    this->name = nullptr;
 }
