@@ -10,6 +10,10 @@ Employee::Employee(){
     name=nullptr;
 }
 
+// Employee::Employee(): id_num(0), salary(0), name(nullptr) {
+//     std::count << "Default constructor called. \n" << std::endl;
+// }
+
 Employee::Employee(int _id, float _salary, const char* _name) {
     this->id_num = _id; // use this to be safe
     this->salary = _salary;
@@ -42,12 +46,21 @@ Employee::Employee(const Employee& other) {
 }
 
 void Employee::print() const{
-    std::cout << "Employee's name: " << name << std::endl;
-    std::cout << "Employee's id: " << id_num << std::endl;
-    std::cout << "Employee's salary: " << salary << std::endl;
+    std::cout << "Employee name: ";
+    if (name!=nullptr)
+    {
+        std::cout<< name << std::endl; 
+    } else {
+        std::cout << "n/a" << std::endl;
+    }
+    
+    std::cout << "Employee id: " << id_num << std::endl;
+    std::cout << "Employee salary: " << salary << std::endl;
 }
 
 Employee::~Employee(){
     delete[] this->name;
     this->name = nullptr;
+
+    std:cout <<"Destructor called for id" << id_num << std::endl
 }
